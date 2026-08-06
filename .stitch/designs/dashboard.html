@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VibeSpace Focus Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#72130e",
+                        "surface-tint": "#ffb4a9",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-tertiary": "#312f3a",
+                        "surface-bright": "#3b3744",
+                        "secondary-container": "#454747",
+                        "on-error-container": "#ffdad6",
+                        "frosted-panel": "rgba(16, 12, 28, 0.45)",
+                        "error-container": "#93000a",
+                        "on-background": "#e7dff0",
+                        "outline-variant": "#57423f",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-primary-fixed-variant": "#86221a",
+                        "surface-container-high": "#2c2834",
+                        "on-primary": "#660806",
+                        "on-primary-fixed": "#410001",
+                        "primary-fixed": "#ffdad5",
+                        "on-error": "#690005",
+                        "surface-container": "#211e2a",
+                        "inverse-on-surface": "#322e3b",
+                        "surface-container-low": "#1d1a26",
+                        "on-secondary": "#2f3131",
+                        "on-tertiary-fixed": "#1c1a25",
+                        "deep-space-indigo": "#0b0813",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "primary-container": "#ff7b6b",
+                        "tertiary-container": "#a5a1af",
+                        "secondary": "#c6c6c7",
+                        "on-secondary-container": "#b4b5b5",
+                        "surface-variant": "#373340",
+                        "primary-fixed-dim": "#ffb4a9",
+                        "surface-container-highest": "#373340",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-surface-variant": "#dec0bb",
+                        "inverse-primary": "#a6392e",
+                        "inverse-surface": "#e7dff0",
+                        "glass-glow-border": "rgba(140, 82, 255, 0.15)",
+                        "primary": "#ffb4a9",
+                        "lavender-slate": "#a29eac",
+                        "on-tertiary-fixed-variant": "#484551",
+                        "surface": "#15121d",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#3a3843",
+                        "background": "#15121d",
+                        "tertiary-fixed": "#e5e0ef",
+                        "on-surface": "#e7dff0",
+                        "surface-dim": "#15121d",
+                        "tertiary": "#c9c4d3",
+                        "surface-container-lowest": "#100c18",
+                        "tertiary-fixed-dim": "#c9c4d3",
+                        "outline": "#a68a87",
+                        "sunrise-tangerine": "#ff7b6b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width": "1440px",
+                        "margin-mobile": "1rem",
+                        "margin-desktop": "2rem",
+                        "gutter": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Satoshi"],
+                        "timer-display-mobile": ["JetBrains Mono"],
+                        "headline-md": ["Satoshi"],
+                        "display-lg": ["Satoshi"],
+                        "headline-lg": ["Satoshi"],
+                        "body-md": ["Satoshi"],
+                        "label-mono": ["JetBrains Mono"],
+                        "timer-display": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "timer-display-mobile": ["64px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-mono": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "timer-display": ["120px", { "lineHeight": "1.0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Satoshi', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            background-color: #15121d; /* Fallback */
+        }
+        
+        /* Modern Dark Glassmorphism organic background */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: linear-gradient(135deg, rgba(11, 8, 19, 0.9), rgba(33, 30, 42, 0.8)), url('placeholder');
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            transform: scale(1.05); /* Prevent blurred edges */
+        }
+
+        .glass-panel {
+            background-color: rgba(16, 12, 28, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(140, 82, 255, 0.15);
+            border-radius: 1.5rem; /* 24px */
+        }
+
+        /* Custom Scrollbar for panels */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 123, 107, 0.3);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 123, 107, 0.6);
+        }
+
+        /* Spring Physics Transitions */
+        .spring-transition {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .interactive-element:hover {
+            transform: scale(1.02);
+        }
+        .interactive-element:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* Custom Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #ff7b6b;
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 0 10px rgba(255, 123, 107, 0.5);
+            transition: transform 0.2s;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #a29eac;
+            border-radius: 2px;
+        }
+
+        /* Checkbox Styling */
+        .custom-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(140, 82, 255, 0.3);
+            border-radius: 6px;
+            background: rgba(16, 12, 28, 0.2);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        .custom-checkbox:checked {
+            background: #ff7b6b;
+            border-color: #ff7b6b;
+        }
+        .custom-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 2px;
+            width: 6px;
+            height: 10px;
+            border: solid #15121d;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .task-item:has(input:checked) .task-text {
+            text-decoration: line-through;
+            color: #a29eac;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body class="text-on-surface min-h-screen flex flex-col relative overflow-hidden">
+<!-- Ambient Background -->
+<div class="ambient-bg" data-alt="A lush, deep forest scene viewed through frosted glass. Dark, rich greens and deep indigo shadows dominate the palette, with soft, diffused sunlight filtering through the canopy. The lighting is moody, cinematic, and immersive, creating a calm, natural atmosphere perfect for a focused digital workspace aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWKtZo6eSnVgCjiVOQ_cauNzHI6bY3CUv6Rzl9iAOOLi_d9p1rV_qVLodzcS6spqjhIw1683huqEYFP2lN2ADdKfLXLPd1nKvAnF4u0zvZwXsgZ0BMgtNe9loe6m0SauKZGNrjxRrLOtC4SARDNlwdSdfXoVrcX8EVURPGHAF4Te0LYVWT4Qp_cdUvB8cLOYbY6DVSDah-6DA2WhxDRq2CySli27Z_EMzxkG8kiqd8wZJWCkz2BQCTeAX0ensR3D0-cd84GwfePoLQ')"></div>
+<!-- Header (TopAppBar) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 bg-frosted-panel backdrop-blur-xl border-b border-glass-glow-border">
+<div class="font-headline-lg text-headline-lg font-bold text-sunrise-tangerine">
+            VibeSpace
+        </div>
+<div class="flex items-center space-x-4">
+<button aria-label="settings" class="text-lavender-slate hover:text-sunrise-tangerine hover:scale-105 active:-translate-y-px transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+<button aria-label="fullscreen" class="text-lavender-slate hover:text-sunrise-tangerine hover:scale-105 active:-translate-y-px transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">fullscreen</span>
+</button>
+<button aria-label="account_circle" class="text-lavender-slate hover:text-sunrise-tangerine hover:scale-105 active:-translate-y-px transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="flex-grow pt-24 pb-20 px-gutter max-w-[max-width] mx-auto w-full h-[1024px] overflow-hidden">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter h-full">
+<!-- Left Column: Tasks -->
+<div class="md:col-span-3 glass-panel p-6 flex flex-col h-full spring-transition opacity-0 translate-y-4" style="animation: fadeUp 0.6s ease forwards 0.1s;">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Tasks</h2>
+<span class="bg-surface-variant text-on-surface-variant font-label-mono text-label-mono px-2 py-1 rounded-full text-xs">
+                        3/5
+                    </span>
+</div>
+<div class="flex mb-6 relative group">
+<input class="w-full bg-surface-container-low border border-glass-glow-border rounded-xl py-3 pl-4 pr-12 text-body-md text-on-surface focus:outline-none focus:border-sunrise-tangerine transition-colors shadow-inner placeholder-lavender-slate" placeholder="Add a new task..." type="text"/>
+<button class="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 rounded-lg bg-sunrise-tangerine text-surface-container-lowest flex items-center justify-center interactive-element">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<div class="flex-grow overflow-y-auto custom-scrollbar space-y-3 pr-2">
+<label class="task-item flex items-start space-x-3 p-3 rounded-xl hover:bg-surface-variant/50 transition-colors cursor-pointer group border border-transparent hover:border-glass-glow-border">
+<input class="custom-checkbox mt-1" type="checkbox"/>
+<span class="task-text font-body-md text-body-md text-on-surface transition-all flex-grow">Review Q3 Marketing Strategy</span>
+</label>
+<label class="task-item flex items-start space-x-3 p-3 rounded-xl hover:bg-surface-variant/50 transition-colors cursor-pointer group border border-transparent hover:border-glass-glow-border">
+<input checked="" class="custom-checkbox mt-1" type="checkbox"/>
+<span class="task-text font-body-md text-body-md text-on-surface transition-all flex-grow">Email Client Updates</span>
+</label>
+<label class="task-item flex items-start space-x-3 p-3 rounded-xl hover:bg-surface-variant/50 transition-colors cursor-pointer group border border-transparent hover:border-glass-glow-border">
+<input class="custom-checkbox mt-1" type="checkbox"/>
+<span class="task-text font-body-md text-body-md text-on-surface transition-all flex-grow">Finalize UI Mockups for Dashboard</span>
+</label>
+<label class="task-item flex items-start space-x-3 p-3 rounded-xl hover:bg-surface-variant/50 transition-colors cursor-pointer group border border-transparent hover:border-glass-glow-border">
+<input checked="" class="custom-checkbox mt-1" type="checkbox"/>
+<span class="task-text font-body-md text-body-md text-on-surface transition-all flex-grow">Weekly Team Sync</span>
+</label>
+<label class="task-item flex items-start space-x-3 p-3 rounded-xl hover:bg-surface-variant/50 transition-colors cursor-pointer group border border-transparent hover:border-glass-glow-border">
+<input checked="" class="custom-checkbox mt-1" type="checkbox"/>
+<span class="task-text font-body-md text-body-md text-on-surface transition-all flex-grow">Drink Water</span>
+</label>
+</div>
+<div class="mt-4 pt-4 border-t border-glass-glow-border text-center">
+<p class="font-label-mono text-label-mono text-lavender-slate text-xs flex items-center justify-center">
+<span class="material-symbols-outlined text-xs mr-1">sync</span> Daily Auto-Reset is active
+                    </p>
+</div>
+</div>
+<!-- Center Column: Pomodoro Clock -->
+<div class="md:col-span-6 flex flex-col items-center justify-center h-full opacity-0 translate-y-4" style="animation: fadeUp 0.6s ease forwards 0.2s;">
+<!-- Mode Toggles -->
+<div class="glass-panel p-2 flex space-x-2 mb-10 rounded-full">
+<button class="px-6 py-2 rounded-full bg-surface-variant text-on-surface font-body-md text-body-md shadow-sm interactive-element">
+                        Focus
+                    </button>
+<button class="px-6 py-2 rounded-full text-lavender-slate hover:text-on-surface hover:bg-surface-variant/50 transition-colors font-body-md text-body-md">
+                        Short Break
+                    </button>
+<button class="px-6 py-2 rounded-full text-lavender-slate hover:text-on-surface hover:bg-surface-variant/50 transition-colors font-body-md text-body-md">
+                        Long Break
+                    </button>
+</div>
+<!-- Clock Face -->
+<div class="relative w-80 h-80 flex items-center justify-center mb-10 group">
+<!-- Progress Ring Background -->
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="rgba(140, 82, 255, 0.15)" stroke-width="2"></circle>
+<!-- Progress Arc -->
+<circle class="transition-all duration-1000 ease-linear" cx="50" cy="50" fill="none" r="45" stroke="#ff7b6b" stroke-dasharray="283" stroke-dashoffset="56" stroke-width="3" style="filter: drop-shadow(0 0 8px rgba(255, 123, 107, 0.4));"></circle>
+</svg>
+<!-- Digital Time -->
+<div class="font-timer-display text-timer-display text-on-surface z-10 flex flex-col items-center group-hover:scale-105 transition-transform duration-500" style="text-shadow: 0 0 20px rgba(255, 123, 107, 0.2);">
+<span>25:00</span>
+</div>
+</div>
+<!-- Controls -->
+<div class="flex items-center space-x-6 glass-panel px-8 py-4 rounded-full">
+<button class="text-lavender-slate hover:text-sunrise-tangerine interactive-element transition-colors">
+<span class="material-symbols-outlined" style="font-size: 32px; font-variation-settings: 'FILL' 0;">restart_alt</span>
+</button>
+<button class="w-16 h-16 rounded-full bg-sunrise-tangerine text-surface-container-lowest flex items-center justify-center interactive-element shadow-[0_0_20px_rgba(255,123,107,0.3)]">
+<span class="material-symbols-outlined" style="font-size: 36px; font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<button class="text-lavender-slate hover:text-sunrise-tangerine interactive-element transition-colors">
+<span class="material-symbols-outlined" style="font-size: 32px; font-variation-settings: 'FILL' 0;">skip_next</span>
+</button>
+</div>
+<!-- Session Info -->
+<div class="mt-8 font-label-mono text-label-mono text-lavender-slate">
+                    Session 2 / 4
+                </div>
+</div>
+<!-- Right Column: Audio Board -->
+<div class="md:col-span-3 glass-panel p-6 flex flex-col h-full opacity-0 translate-y-4" style="animation: fadeUp 0.6s ease forwards 0.3s;">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Audio Board</h2>
+<!-- YouTube Section -->
+<div class="mb-8 bg-surface-container-low/50 p-4 rounded-xl border border-glass-glow-border">
+<div class="flex items-center space-x-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-sunrise-tangerine">
+<span class="material-symbols-outlined">smart_display</span>
+</div>
+<div class="flex-grow overflow-hidden">
+<p class="font-body-md text-body-md text-on-surface truncate text-sm">Lofi Hip Hop Radio - Beats to Relax/Study to</p>
+<p class="font-label-mono text-label-mono text-lavender-slate text-xs truncate">ChilledCow</p>
+</div>
+<button class="text-lavender-slate hover:text-sunrise-tangerine transition-colors">
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="flex items-center space-x-3 mb-4">
+<span class="material-symbols-outlined text-lavender-slate text-sm">volume_up</span>
+<input class="flex-grow" max="100" min="0" type="range" value="40"/>
+</div>
+<input class="w-full bg-surface-container-lowest border border-glass-glow-border rounded-lg py-2 px-3 text-xs font-label-mono text-on-surface focus:outline-none focus:border-sunrise-tangerine transition-colors shadow-inner placeholder-lavender-slate" placeholder="Paste YouTube Link" type="text"/>
+</div>
+<div class="flex justify-between items-end mb-4 border-b border-glass-glow-border pb-2">
+<h3 class="font-body-md text-body-md text-on-surface-variant">White Noise</h3>
+<button class="font-label-mono text-label-mono text-xs text-lavender-slate hover:text-sunrise-tangerine transition-colors">
+                        Reset Mixer
+                    </button>
+</div>
+<!-- Mixer Channels -->
+<div class="flex-grow overflow-y-auto custom-scrollbar space-y-4 pr-2">
+<!-- Channel 1 -->
+<div class="flex items-center space-x-3 group">
+<div class="w-8 flex justify-center">
+<span class="material-symbols-outlined text-lavender-slate group-hover:text-sunrise-tangerine transition-colors text-xl">rainy</span>
+</div>
+<input class="flex-grow" max="100" min="0" type="range" value="65"/>
+<button class="text-lavender-slate hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+</button>
+</div>
+<!-- Channel 2 -->
+<div class="flex items-center space-x-3 group">
+<div class="w-8 flex justify-center">
+<span class="material-symbols-outlined text-lavender-slate group-hover:text-sunrise-tangerine transition-colors text-xl">local_fire_department</span>
+</div>
+<input class="flex-grow" max="100" min="0" type="range" value="20"/>
+<button class="text-lavender-slate hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+</button>
+</div>
+<!-- Channel 3 -->
+<div class="flex items-center space-x-3 group">
+<div class="w-8 flex justify-center">
+<span class="material-symbols-outlined text-lavender-slate group-hover:text-sunrise-tangerine transition-colors text-xl opacity-50">air</span>
+</div>
+<input class="flex-grow" max="100" min="0" type="range" value="0"/>
+<button class="text-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm">volume_off</span>
+</button>
+</div>
+<!-- Channel 4 -->
+<div class="flex items-center space-x-3 group">
+<div class="w-8 flex justify-center">
+<span class="material-symbols-outlined text-lavender-slate group-hover:text-sunrise-tangerine transition-colors text-xl">waves</span>
+</div>
+<input class="flex-grow" max="100" min="0" type="range" value="10"/>
+<button class="text-lavender-slate hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+</button>
+</div>
+<!-- Channel 5 -->
+<div class="flex items-center space-x-3 group">
+<div class="w-8 flex justify-center">
+<span class="material-symbols-outlined text-lavender-slate group-hover:text-sunrise-tangerine transition-colors text-xl opacity-50">local_cafe</span>
+</div>
+<input class="flex-grow" max="100" min="0" type="range" value="0"/>
+<button class="text-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm">volume_off</span>
+</button>
+</div>
+<!-- Channel 6 -->
+<div class="flex items-center space-x-3 group">
+<div class="w-8 flex justify-center">
+<span class="material-symbols-outlined text-lavender-slate group-hover:text-sunrise-tangerine transition-colors text-xl opacity-50">keyboard</span>
+</div>
+<input class="flex-grow" max="100" min="0" type="range" value="0"/>
+<button class="text-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm">volume_off</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 left-0 w-full z-40 flex justify-center items-center py-4 px-margin-desktop bg-transparent pointer-events-none">
+<p class="font-label-mono text-label-mono text-lavender-slate text-xs opacity-70">
+            VibeSpace — No registration required. All data is saved locally.
+        </p>
+</footer>
+<style>
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body></html>

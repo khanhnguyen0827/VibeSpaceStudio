@@ -1,0 +1,14 @@
+{
+  "projectId": "12508202134607516294",
+  "projectName": "VibeSpaceStudio",
+  "designSystemId": "1d6d7f4b678f4cbbb9d74481fc42c2af",
+  "screens": [
+    {
+      "id": "8ca60055fcfa41ec8531eb6f32d190ab",
+      "title": "VibeSpace Dashboard",
+      "deviceType": "DESKTOP",
+      "htmlPath": ".stitch/designs/dashboard.html",
+      "screenshotPath": ".stitch/designs/dashboard_screenshot.png"
+    }
+  ]
+}

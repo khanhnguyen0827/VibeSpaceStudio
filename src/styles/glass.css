@@ -1,0 +1,129 @@
+/* Glassmorphism Panel styles */
+.glass-panel {
+  background-color: var(--frosted-panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-glow-border);
+  border-radius: 1.5rem; /* 24px */
+}
+
+/* Custom Scrollbar for panels */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 123, 107, 0.25);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 123, 107, 0.5);
+}
+
+/* Interactive elements spring animation */
+.spring-transition {
+  transition: var(--spring-transition);
+}
+
+.interactive-element {
+  transition: var(--spring-transition);
+}
+.interactive-element:hover {
+  transform: scale(1.02);
+}
+.interactive-element:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Range Slider customization */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--sunrise-tangerine);
+  cursor: pointer;
+  margin-top: -6px;
+  box-shadow: 0 0 10px var(--sunrise-tangerine-glow);
+  transition: transform 0.2s;
+}
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: var(--lavender-slate);
+  border-radius: 2px;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(140, 82, 255, 0.3);
+  border-radius: 6px;
+  background: rgba(16, 12, 28, 0.2);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  display: inline-block;
+  vertical-align: middle;
+}
+.custom-checkbox:checked {
+  background: var(--sunrise-tangerine);
+  border-color: var(--sunrise-tangerine);
+}
+.custom-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 10px;
+  border: solid var(--deep-space-indigo);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.task-item:has(input:checked) .task-text {
+  text-decoration: line-through;
+  color: var(--lavender-slate);
+  opacity: 0.6;
+}
+
+/* Floating Animations */
+@keyframes ambientPulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.01); opacity: 0.95; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up-anim {
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

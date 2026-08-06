@@ -1,0 +1,27 @@
+/* Design tokens for VibeSpace */
+:root {
+  /* Colors */
+  --canvas-bg: #0b0813;
+  --surface-bg: #15121d;
+  
+  /* Glassmorphism panel variables */
+  --frosted-panel: rgba(16, 12, 28, 0.45);
+  --glass-glow-border: rgba(140, 82, 255, 0.15);
+  
+  /* Core Colors */
+  --frost-white: #ffffff;
+  --lavender-slate: #a29eac;
+  --sunrise-tangerine: #ff7b6b;
+  --sunrise-tangerine-glow: rgba(255, 123, 107, 0.4);
+  --deep-space-indigo: #0b0813;
+  
+  /* Spacing */
+  --gutter: 1.5rem;
+  --margin-desktop: 2rem;
+  --margin-mobile: 1rem;
+  --max-width: 1440px;
+  
+  /* Transition curve */
+  --spring-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --smooth-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
